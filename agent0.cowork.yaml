@@ -1,0 +1,15 @@
+workspace:
+  root: "./agent_workspace"
+  inbox: "./agent_workspace/inbox"
+  working: "./agent_workspace/working"
+  output: "./agent_workspace/output"
+  memory_dir: "./agent_workspace/memory"
+  logs_dir: "./agent_workspace/logs"
+
+prompts:
+  system: "./agent_workspace/memory/cowork_system.txt"
+  rituals: "./agent_workspace/memory/rituals.md"
+  operations_rules: "./agent_workspace/memory/operations_rules.md"
+
+autonomy:
+  enabled: true

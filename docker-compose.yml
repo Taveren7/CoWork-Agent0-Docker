@@ -1,0 +1,31 @@
+services:
+  agent0:
+    image: agent0ai/agent-zero
+    container_name: agent0
+    tty: true
+    stdin_open: true
+
+    ports:
+      - "50001:80"
+
+    volumes:
+      # === CORE WORKSPACE (read-write) ===
+      - ./agent_workspace:/work_dir
+
+      # === USER FOLDERS (read-only for safety) ===
+      - ~/Desktop:/desktop:ro
+      - ~/Documents:/documents:ro
+
+      # === AGENT CONFIGURATION ===
+      - ./agents/cowork:/a0/agents/cowork
+      - ./tmp/settings.json:/a0/tmp/settings.json
+      # === OPTIONAL: Additional folders (uncomment as needed) ===
+      # - ~/Downloads:/downloads:ro
+      # - ~/Projects:/projects              # Read-write for active projects
+      # - ~/Code:/code:ro
+      # - ~/Pictures:/pictures:ro
+      # - ~/Movies:/movies:ro
+      # - ~/Music:/music:ro
+
+      # Optional: restart policy
+      # restart: unless-stopped

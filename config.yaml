@@ -1,0 +1,84 @@
+# config.yaml — Agent0 Cowork Mode (Docker mount at /work_dir)
+# Assumes docker-compose mounts agent_workspace to /work_dir
+# Your workspace lives at: /work_dir
+
+agent0:
+  name: "Cowork"
+  mode: "autonomous_task"
+  timezone: "America/Chicago"
+
+workspace:
+  root: "/work_dir"
+  inbox: "/work_dir/inbox"
+  working: "/work_dir/working"
+  output: "/work_dir/output"
+  memory_dir: "/work_dir/memory"
+  logs_dir: "/work_dir/logs"
+
+filesystem:
+  # Lock file operations to the workspace only
+  allowed_paths:
+    - "/work_dir"
+  deny_patterns:
+    - "**/.git/**"
+    - "**/node_modules/**"
+    - "**/venv/**"
+    - "**/__pycache__/**"
+  safety:
+    forbid_delete: true
+    forbid_move_outside_workspace: true
+    require_versioned_outputs: true
+    version_suffix_format: "v{n}"  # e.g., PO-2026-01-15-v1.xlsx
+
+llm:
+  provider: "openai"
+  model: "gpt-5.2"
+  temperature: 0.2
+  max_output_tokens: 4096
+
+routing:
+  roles:
+    planner:
+      model: "gpt-5.2"
+      temperature: 0.2
+      max_output_tokens: 2048
+    worker:
+      model: "gpt-5.2-mini"
+      temperature: 0.1
+      max_output_tokens: 4096
+    auditor:
+      model: "gpt-5.2-mini"
+      temperature: 0.1
+      max_output_tokens: 2048
+
+prompts:
+  system: "/work_dir/memory/cowork_system.txt"
+  task_template: "/work_dir/memory/task_template.txt"
+  rituals: "/work_dir/memory/rituals.md"
+  operations_rules: "/work_dir/memory/operations_rules.md"
+
+execution:
+  # Optional: allow local tools like python scripts
+  allow_shell: true
+  allow_python: true
+  shell_working_dir: "/work_dir/working"
+  python_working_dir: "/work_dir/working"
+  # If your Agent0 fork supports tool approvals, keep it automatic ONLY inside sandbox.
+  tool_approval: "auto_in_workspace"
+
+logging:
+  enabled: true
+  write_run_log: true
+  run_log_path: "/work_dir/logs/run_{timestamp}.md"
+  require_work_summary: true
+  require_file_manifest: true
+
+autonomy:
+  loop:
+    max_steps: 30
+    stop_when_deliverables_met: true
+    auto_fix_failures: true
+  ask_user_only_if:
+    - "missing_credentials"
+    - "blocked_by_permissions"
+    - "ambiguous_scope_causes_risk"

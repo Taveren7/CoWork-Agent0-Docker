@@ -1,0 +1,40 @@
+# Git ignore for CoWork Agent0 Docker
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sensitive data
+.env
+*.env.local
+
+# Logs (keep the folder, ignore contents)
+agent_workspace/logs/*
+!agent_workspace/logs/.gitkeep
+
+# Working files (user's scratch space)
+agent_workspace/working/*
+!agent_workspace/working/.gitkeep
+
+# Output files (user's deliverables)
+agent_workspace/output/*
+!agent_workspace/output/.gitkeep
+
+# Inbox files (user's inputs)
+agent_workspace/inbox/*
+!agent_workspace/inbox/.gitkeep
+
+# Keep settings.json as template but users will modify it
+# tmp/settings.json

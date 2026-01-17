@@ -1,0 +1,16 @@
+TASK:
+Build a PO from the latest inventory data.
+
+DELIVERABLES:
+- Excel PO
+- Summary log
+
+CONSTRAINTS:
+- No deletes
+- Use pack-size rounding
+
+BEGIN.
+
+##switching
+## /mode cowork
+##/mode chat

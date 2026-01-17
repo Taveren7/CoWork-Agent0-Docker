@@ -1,0 +1,10 @@
+prompts:
+  system: null
+  rituals: null
+  operations_rules: null
+
+autonomy:
+  enabled: false
+
+filesystem:
+  allowed_paths: []

@@ -33,8 +33,17 @@ agent_workspace/output/*
 !agent_workspace/output/.gitkeep
 
 # Inbox files (user's inputs)
+# Inbox files (user's inputs)
 agent_workspace/inbox/*
 !agent_workspace/inbox/.gitkeep
+
+# User Scripts (ignore contents)
+agent_workspace/scripts/*
+!agent_workspace/scripts/.gitkeep
+
+# Ignore JSON credentials in memory/scripts
+agent_workspace/memory/*.json
+agent_workspace/scripts/*.json
 
 # Keep settings.json as template but users will modify it
 # tmp/settings.json

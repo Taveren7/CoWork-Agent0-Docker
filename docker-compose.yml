@@ -15,12 +15,13 @@ services:
       # === USER FOLDERS (read-only for safety) ===
       - ~/Desktop:/desktop:ro
       - ~/Documents:/documents:ro
+      - ~/Downloads:/downloads:ro
 
       # === AGENT CONFIGURATION ===
+      - ./config.yaml:/a0/config.yaml
       - ./agents/cowork:/a0/agents/cowork
       - ./tmp/settings.json:/a0/tmp/settings.json
       # === OPTIONAL: Additional folders (uncomment as needed) ===
-      # - ~/Downloads:/downloads:ro
       # - ~/Projects:/projects              # Read-write for active projects
       # - ~/Code:/code:ro
       # - ~/Pictures:/pictures:ro

@@ -15,6 +15,20 @@ This project configures [Agent Zero](https://github.com/frdel/agent-zero) to run
 - 🔄 **Follow a structured workflow**: PLAN → EXECUTE → VERIFY → SUMMARIZE
 - 🛡️ **Built-in safety guardrails**: No accidental deletions, versioned outputs
 
+## Differences from Original Agent Zero
+
+This repository (`CoWork-Agent0-Docker`) is a **custom configuration wrapper** around the original [agent-zero](https://github.com/frdel/agent-zero), not a modified fork of the core application code.
+
+| Feature | Original Agent Zero | CoWork-Agent0-Docker |
+|---------|---------------------|----------------------|
+| **Deployment** | Python/Conda (CLI) | **Docker-First** (Sandboxed) |
+| **File Access** | Full system access | **Read-Only** Desktop/Docs + Writable Workspace |
+| **Persona** | General Purpose | **"Coworker"** (Strict PLAN → EXECUTE → VERIFY) |
+| **Safety** | User responsibility | **Guardrails** (No delete, versioned outputs) |
+| **OS Support** | Manual setup | **Unified** (macOS, Windows, Linux) |
+
+**Key Benefit**: You get the full power of Agent Zero, but in a safe, sandboxed container that acts like a helpful coworker without risking your personal files.
+
 ## Quick Start
 
 ### Prerequisites
